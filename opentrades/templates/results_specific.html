@@ -1,0 +1,8 @@
+{% extends 'main_template.html'%}
+
+{%block content%}
+<h4>Head</h4>
+{% for account in account_number %}
+<p>{{account}}</p>
+{%endfor%}
+{% endblock%}

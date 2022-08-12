@@ -1,0 +1,479 @@
+{% load static %}
+
+
+
+<html lang="en"><head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Gogi Bot AI </title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'new_dashboard/vendors/feather/feather.css'%}">
+  <link rel="stylesheet" href="{% static 'new_dashboard/vendors/mdi/css/materialdesignicons.min.css'%}">
+  <link rel="stylesheet" href=".{% static 'new_dashboard/vendors/ti-icons/css/themify-icons.css'%}">
+  <link rel="stylesheet" href=".{% static 'new_dashboard/vendors/typicons/typicons.css'%}">
+  <link rel="stylesheet" href="{% static 'new_dashboard/vendors/simple-line-icons/css/simple-line-icons.css'%}">
+  <link rel="stylesheet" href="{% static 'new_dashboard/vendors/css/vendor.bundle.base.css'%}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{% static 'new_dashboard/vendors/select2/select2.min.css'%}">
+  <link rel="stylesheet" href="{% static 'new_dashboard/vendors/select2-bootstrap-theme/select2-bootstrap.min.css'%}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'new_dashboard/css/vertical-layout-light/style.css'%}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{% static 'new_dashboard/images/favicon.png'%}">
+
+<style >
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 150px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 25px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+
+
+ #outer-circle {
+   background: #385a94;
+   border-radius: 50%;
+   height: 50px;
+   width: 50px;
+   position: relative;
+   /* 
+    Child elements with absolute positioning will be 
+    positioned relative to this div 
+   */
+ }
+ #inner-circle {
+   position: absolute;
+   background: #a9aaab;
+   border-radius: 50%;
+   height: 30px;
+   width: 30px;
+   /*
+    Put top edge and left edge in the center
+   */
+   top: 50%;
+   left: 50%;
+   margin: -150px 0px 0px -150px;
+   /* 
+    Offset the position correctly with
+    minus half of the width and minus half of the height 
+   */
+ }
+</style>
+
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+        <div class="me-3">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+        <div>
+          <a class="navbar-brand brand-logo" href="../../index.html">
+            <img src="{% static 'icons/logo.svg'%}" alt="logo">
+          </a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html">
+            <img src="{% static 'new_dashboard/images/logo-mini.svg'%}" alt="logo">
+          </a>
+        </div>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-top"> 
+        <ul class="navbar-nav">
+          <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+            <h1 class="welcome-text">{{greetings}} <span class="text-black fw-bold">My dashboard</span></h1>
+                     </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+
+
+          <li class="nav-item">
+            <form class="search-form" action="#">
+              <i class="icon-search"></i>
+              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+            </form>
+          </li>
+         
+          <li class="nav-item dropdown"> 
+            <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="icon-bell"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="countDropdown">
+              <a class="dropdown-item py-3">
+                <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
+                <span class="badge badge-pill badge-primary float-right">View all</span>
+              </a>
+              <div class="dropdown-divider"></div>
+      
+
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <img src="{% static 'new_dashboard/images/faces/face1.jpg'%}" alt="image" class="img-sm profile-pic">
+                </div>
+                <div class="preview-item-content flex-grow py-2">
+                  <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
+                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
+                </div>
+              </a>
+
+            </div>
+          </li>
+          <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+            <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="img-xs rounded-circle" src="{% static 'new_dashboard/images/faces/face8.jpg'%}" alt="Profile image"> </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown" style="width: 300px;">
+              <div class="dropdown-header text-center">
+                <img class="img-md rounded-circle" src="{% static 'new_dashboard/images/faces/face8.jpg'%}" alt="Profile image">
+                <p class="mb-1 mt-3 font-weight-semibold">{{user.first_name}} {{user.last_name}}</p>
+                <p class="fw-light text-muted mb-0">{{user.email}}</p>
+                <p class="fw-light text-muted mb-0">Joined on {{user.date_joined}}</p>
+              </div>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
+              <a class="dropdown-item" href="{% url 'logout'%}" ><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+ 
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="todo-tab" data-bs-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-bs-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="setting-content">
+          <div class="tab-pane fade show active scroll-wrapper ps ps--active-y" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+            <div class="add-items d-flex px-3 mb-0">
+              <form class="form w-100">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                </div>
+              </form>
+            </div>
+
+   
+          <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 538px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 372px;"></div></div></div>
+          <!-- To do section tab ends -->
+          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+            <div class="d-flex align-items-center justify-content-between border-bottom">
+              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See All</small>
+            </div>
+
+          </div>
+          <!-- chat tab ends -->
+        </div>
+      </div>
+      <!-- partial -->
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account-performance' %}">
+              <i class=" mdi mdi-home mdi-grid-large menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">Trading Accounts</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'add-client-account' %}">Add Accounts</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'delete-account' %}">Delete Account</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'my-trading-accounts' %}">My Accounts</a></li>
+
+                
+                
+              </ul>
+            </div>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">Go Bots</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'go_forex_bots' %}">Forex</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'indices_bots' %}">Stocks</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'crypto_bots' %}">Crypto</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'gold_bots' %}">Gold</a></li>
+
+    
+              </ul>
+            </div>
+          </li>
+     
+          <li class="nav-item ">
+            <a class="nav-link" data-bs-toggle="collapse" href="../../index.html" aria-expanded="false" aria-controls="form-elements">
+              <i class="menu-icon mdi  mdi mdi-cached "></i>
+              <span class="menu-title">Activities</span>
+              <i class="menu-arrow"></i>
+            </a>
+       
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="../../index.html" aria-expanded="false" aria-controls="charts">
+              <i class="menu-icon mdi mdi-chart-line"></i>
+              <span class="menu-title">Analytics</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+
+   
+          
+   
+          <li class="nav-item nav-category">help</li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="menu-icon mdi mdi-file-document"></i>
+              <span class="menu-title">Documentation Guide</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+
+
+{% block content %}
+{% endblock %}
+           
+      
+
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Developed By <a href="https://instapipspro.com/" target="_blank">Instant Investments ltd</a> f</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2022. All rights reserved.</span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="{% static 'new_dashboard/vendors/js/vendor.bundle.base.js'%}"></script>
+ 
+
+  <script src="{% static 'new_dashboard/vendors/typeahead.js/typeahead.bundle.min.js'%}"></script>
+  <script src="{% static 'new_dashboard/vendors/select2/select2.min.js'%}"></script>
+  <script src="{% static 'new_dashboard/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js'%}"></script>
+
+  <script src="{% static 'new_dashboard/js/off-canvas.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/hoverable-collapse.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/template.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/settings.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/todolist.js'%}"></script>
+
+  <script src="{% static 'new_dashboard/js/file-upload.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/typeahead.js'%}"></script>
+  <script src="{% static 'new_dashboardjs/select2.js'%}"></script>
+
+
+</body></html>
+
+
+
+
+
+ <!-- endinject
+  <script src="{% static 'new_dashboard/vendors/js/vendor.bundle.base.js'%}"></script>
+ 
+
+  <script src="{% static 'new_dashboard/vendors/typeahead.js/typeahead.bundle.min.js'%}"></script>
+  <script src="{% static 'new_dashboard/vendors/select2/select2.min.js'%}"></script>
+  <script src="{% static 'new_dashboard/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js'%}"></script>
+
+  <script src="{% static 'new_dashboard/js/off-canvas.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/hoverable-collapse.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/template.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/settings.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/todolist.js'%}"></script>
+
+  <script src="{% static 'new_dashboard/js/file-upload.js'%}"></script>
+  <script src="{% static 'new_dashboard/js/typeahead.js'%}"></script>
+  <script src="{% static 'new_dashboardjs/select2.js'%}"></script>
+
+  //
+
+    <link rel="stylesheet" href="{% static 'new_dashboard/vendors/feather/feather.css'%}">
+  <link rel="stylesheet" href=".% static 'vendors/mdi/css/materialdesignicons.min.css'%}">
+  <link rel="stylesheet" href="% static 'vendors/ti-icons/css/themify-icons.css'%}">
+  <link rel="stylesheet" href="% static 'vendors/typicons/typicons.css'%}">
+  <link rel="stylesheet" href="% static 'vendors/simple-line-icons/css/simple-line-icons.css'%}">
+  <link rel="stylesheet" href="% static 'vendors/css/vendor.bundle.base.css'%}">
+
+  <link rel="stylesheet" href="{% static 'new_dashboard/vendors/select2/select2.min.css'%}">
+  <link rel="stylesheet" href="{% static 'new_dashboard/vendors/select2-bootstrap-theme/select2-bootstrap.min.css'%}">
+
+  <link rel="stylesheet" href="{% static 'new_dashboard/css/vertical-layout-light/style.css'%}">
+
+  <link rel="shortcut icon" href="../../images/favicon.png">
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- ======= Hero Section ======= 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Core - Dashboard Builder</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+
+    
+    <link rel="stylesheet" media="all" href="{% static 'dashboad_template/css/app.min.css'%}">
+    <script>
+      var viewportmeta = document.querySelector('meta[name="viewport"]');
+      if (viewportmeta) {
+        if (screen.width < 375) {
+          var newScale = screen.width / 375;
+          viewportmeta.content = 'width=375, minimum-scale=' + newScale + ', maximum-scale=1.0, user-scalable=no, initial-scale=' + newScale + '';
+        } else {
+          viewportmeta.content = 'width=device-width, maximum-scale=1.0, initial-scale=1.0';
+        }
+      }
+
+    </script>
+
+  </head>
+  <body>
+    <script>
+      console.log(localStorage.getItem('darkMode'));
+      if (localStorage.getItem('darkMode') === "on") {
+        document.body.classList.add("dark");
+        document.addEventListener("DOMContentLoaded", function() {
+          document.querySelector('.js-theme input').checked = true;
+        });
+      }
+    </script>
+
+<div style="sidebar">
+
+        <div class="sidebar__foot">
+               <label class="theme js-theme">
+            <input class="theme__input" type="checkbox"/><span class="theme__inner"><span class="theme__box">
+                <svg class="icon icon-sun">
+                  <use xlink:href="#icon-sun"></use>
+                </svg>Light</span><span class="theme__box">
+                <svg class="icon icon-moon">
+                  <use xlink:href="#icon-moon"></use>
+                </svg>Dark</span></span>
+          </label>
+        </div>
+    <script src="{% static 'dashboad_template/js/lib/jquery.min.js'%}"></script>
+    <script src="{% static 'dashboad_template/js/app.js'%}"></script>
+    
+    <script src="{% static 'dashboad_template/js/lib/jquery.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/slick.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/jquery.nice-select.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/tooltipster.bundle.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/apexcharts.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/jquery.richtext.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/jquery.fancybox.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/jQuery.tagify.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/moment.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/jquery.daterangepicker.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/nouislider.min.js'%}"></script>
+    <script src="% static 'dashboad_template/js/lib/wNumb.js'%}"></script>
+    <script src="% static 'dashboad_template/js/charts.js'%}"></script>
+    <script src="% static 'dashboad_template/js/demo.js'%}"></script>
+    <script src="% static 'sidebar/js/app.js'%}"></script>
+ 
+  </div>
+  </body>
+</html>
+-->

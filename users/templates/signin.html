@@ -1,0 +1,96 @@
+{% load static %}
+
+  <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gogi Bot AI Sign In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+ 
+    <style>
+
+          .form{
+      position: -webkit-sticky;
+    
+  left: auto; 
+  top: auto;  
+  width: auto; 
+  height: auto;
+      color: white;
+      }
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+a{
+
+   display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+    </style>
+  </head>
+  <body style="background-color:black;">
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+     <section>
+
+      <div class="container-fluid" style="left: 620px; top: 150px;  width: 360px; height: 10px; padding-top: 150px;">
+        <form class="form" method="post">
+          
+          <div class="card" style="background-color:rgb(36, 27, 27 ); border-color:rgb(11, 10, 10); border-radius: 25px;" >
+            <div class="card-body">
+             <img src="{%static 'icons/logo.png'%}">
+               <h5 class="card-title" style="text-align:center ;">SIGN IN</h5>
+                    {% csrf_token%}
+                   <div class="mb-3">
+                    <label class="form-label">Email address</label>
+                    <input type="username" class="form-control" name="username" placeholder="username" style="background-color:rgb(48, 47, 47 );border-color: rgb(48, 47, 47 );border-radius: 25px; color: white;">
+                  </div>
+
+                   <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="password" style="background-color:rgb(48, 47, 47 );border-color: rgb(48, 47, 47 );border-radius: 25px;color: white;" >
+                    <br>
+          
+    <div class="d-grid gap-2">
+  <button class="btn btn-primary" type="submit" style="border-radius: 25px;">Login</button>
+         <a  href="#" style="color:white">Don't have an account? Sign up?</a>
+   
+        </div>
+
+          </div>
+
+            </div>
+</div>
+</form>
+ <a href="#" style="color:white; text-align: center;">Forgot Password?</a>
+</div>
+<div class="Forgotp" style="text-align:center;">
+ <a  href="#" style="color:white">Privacy policy - Terms of use</a>
+ </div>
+</div>
+</div>
+
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>

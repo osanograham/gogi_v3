@@ -1,0 +1,159 @@
+{% extends 'main_template.html'%}
+
+
+{%block content%}
+<script>
+    var buttoncolor=green;
+</script>
+<style>
+.concentric-circles {
+  width: 80px;
+  height: 80px;
+  margin-top: 50px;
+  margin-left: 50%;
+  background-color: green;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: all 0.2s ease-in-out;
+  animation: ripple 2.0s 0.2s infinite;
+  -webkit-animation: ripple 2.0s 0.2s  infinite;
+}
+
+.concentric-circles:hover {
+  transform: translateX(-50%) scale(1.2);
+}
+
+@-webkit-keyframes ripple {
+  20% {
+    box-shadow: 0px 0px 0px 6px #fff,
+                0px 0px 0px 8px #222;
+  }
+  
+  50% {
+    box-shadow: 0px 0px 0px 6px #fff,
+                0px 0px 0px 8px #222,
+                0px 0px 0px 14px #fff,
+                0px 0px 2px 16px #888;
+  }
+  
+  100% {
+    box-shadow: 0px 0px 0px 6px #fff,
+                0px 0px 0px 8px #222,
+                0px 0px 0px 14px #fff,
+                0px 0px 2px 16px #888, 
+                0px 0px 0px 22px #fff,
+                0px 0px 5px 24px #ddd;
+  }
+}
+
+</style>
+<div class="container">
+
+<div class="card">
+    <div class="container-fluid" style="margin:10px; border-radius: 25px;">
+        <div class="row" style="padding-right: 25px">
+            <div class="col-7">
+                <div class="row">
+                <div class="card" style="width: 17rem; margin: 1%;">
+                      <div class="card-body">
+                        <h2 class="card-title">Account Balance:</h2>
+                      </div>
+                </div>
+                    <div class="card" style="width: 17rem; margin: 1%;">
+                      <div class="card-body">
+                        <h2 class="card-title">Account P/L:</h2>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card" style="width: 34.6rem; margin: 1%;">
+                      <div class="card-body">
+                        <h2 class="card-title">Profit Loss Graph:</h2>
+                        <h2 class="card-title">Profit Loss Graph:</h2>
+                        <h2 class="card-title">Profit Loss Graph:</h2>
+                        <h2 class="card-title">Profit Loss Graph:</h2>
+                        <h2 class="card-title">Profit Loss Graph:</h2>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="card" style="width: 18rem; margin: 1%; height: 220px; overflow-y: scroll; ">
+                <p class="title">Trading Accounts</p>
+                     
+                <div class="row" style="margin:5px;">
+                    {% for x in indices_bots_list%}
+                <div class="card" style="width: 15rem;height: 5rem; margin: 3%; border-radius: 20px; padding:0px; background:grey; color: white;">
+                      <div class="card-body">
+                        <p>{{x.choose_platform}}</p>
+                      </div>
+                </div>
+                 {%endfor%}
+                </div>
+                </div>
+                       <div class="card" style="width: 15rem; margin: 1%;">
+                      <div class="card-body">
+                        <h2 class="card-title">Statistic:</h2>
+                      </div>
+                    </div>
+                    </div>
+            </div>
+            <div class="col-lg-5" style="background-color:white;border-radius:5%; border-style: solid; border-color:yellow; height: auto; margin: 100p;">
+                     <div class="cy" style="margin-bottom: 50px;">
+                        <div class="concentric-circles">                    
+                        </div>
+                     </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="height: auto; border-radius:25px">
+                            <p style="text-align:center; padding:5px"><b>Manage Risk</b></p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="height:auto; border-radius: 25px;">
+                            <p style="text-align: center; padding: 5px;"> <b>View Payments</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col">
+                        <div class="card" style="height: auto; border-radius:25px">
+                            <p style="text-align:center; padding:5px"><b>Add Trading Account</b></p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="height:auto; border-radius: 25px;">
+                            <p style="text-align: center; padding: 5px;"> <b>More</b></p>
+                        </div>
+                    </div>
+                </div>
+                   <div class="card" style="width: auto; hight: auto;margin: 1%;">
+                      <div class="card-body">
+                        <div class="row">
+                            <div class="col card-title">
+                        <p style="border-radius: 0px; padding:5px; text-align:left"> <b>Activities</b>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p style="border-radius: 0px; padding:5px; text-align:right"> 
+                        viewall</p>
+                        </div>
+                        </div>
+                        <h2 class="card-title">Statistic:</h2>
+                        <h2 class="card-title">Statistic:</h2>
+                        <h2 class="card-title">Statistic:</h2>
+                        <h2 class="card-title">Statistic:</h2>
+                      </div>
+                    </div>
+            </div>
+
+
+
+        </div>
+    
+
+          
+        </div>
+    </div>
+
+</div>
+{% endblock%}

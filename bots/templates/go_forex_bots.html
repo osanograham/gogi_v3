@@ -1,0 +1,110 @@
+{% extends 'main_template.html'%}
+
+{%block content%}
+<div class="card grid-margin stretch-card" style="height: 50%;">
+<div class="title">
+    
+    <div class="card" style="text-align: center; font-size: 50px; margin: 25px;">Indices Bots
+    <div class="row">
+        <div class="col">
+      
+        </div>
+        <div class="col-md-6">
+         <div class="card" style="align-items: center; margin-bottom: 25px; padding:10px; background: green; ">
+        <p style="font-size: 16px;"><b>Reffer A Friend, Receive Rewards</b></p>
+        </div>
+        </div>
+        <div class="col">
+   
+        </div>
+    </div>
+    </div>
+</div>
+<div class="row">
+        
+
+          {% for bot in indices_bots_list%}
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col" style="text-align:left; hight:auto;">
+                           <h4 class="card-title" style="padding-top:0px"><b><a href="results/{{bot.login}}">{{bot.name}}</a></b></h4>
+                           <p>{{bot.instruments}}<p>
+                            <p><b>Total Returns</b><p>
+                                 <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+
+                           
+                        </div>
+                        <div class="col" style="text-align:right; height: auto;">
+                            <button type="button" onclick="myFunction({{bot.login}})" class="dropbtn" style="border-radius:25px" >Add Account</button>
+                            <div id="{{bot.login}}" class="dropdown-content">
+                                {% for x in drop_down %}
+                                <a href="{{bot.login}}/{{x.account_number}}">{{x.account_number}}</a>
+                                {%endfor%}
+                                
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="text-align:right; height: auto;border-style: solid; border-bottom: black; border-top: black;border-left: black;">
+                            <p><b>Required Capital</b></p>
+                            <p><b>${{bot.capital_required}}</b></p>
+                        </div>
+                        <div class="col" style="text-align:right; height: auto;border-style: solid; border-bottom: black; border-top: black;border-left: black;">
+                             <p><b>Risk Level</b></p>
+                            <b style="font-size: 25ps">{{bot.level_of_risk}}</b>
+                        </div>
+                        <div class="col-md-5"style="text-align:right; height: auto;">
+                             <p><b>Pricing</b></p>
+                            <b style="font-size: 25ps">${{bot.pricing}} Per Month</b>
+                        </div>
+                        
+
+                    </div>
+                     
+                </div>
+              </div>
+            </div>
+            {% endfor%}
+
+          </div>
+          
+
+</div>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction(x) {
+  document.getElementById(x).classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+{% endblock%}
+
+<!--
+    {%for bot in indices_bots_list %}
+ {{bot.name}}
+ <br>
+{% endfor%}-->

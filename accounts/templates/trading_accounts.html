@@ -1,0 +1,69 @@
+{% extends 'main_template.html'%}
+{% load crispy_forms_tags %}
+
+{%block content%}
+
+ <div class="col-lg-12 grid-margin stretch-card">
+<div class="card">
+<div class="card-body">
+
+                  <h4 class="card-title" style="text-align:center">These are your trading accounts</h4>
+                  <p class="card-description" style="text-align:center">
+                    Associated Trades
+                  </p>
+                 
+                 <button type="button" class="btn btn-dark btn-rounded btn-md col-12" ><a href="{% url 'add-client-account'%}">Add Account</a></button>
+                 <div style="padding-bottom: 10px;"></div>
+
+               
+                   <div class="container-fluid"> 
+                    <div class="card  " style="padding-left: 20px;">
+                    <div style="padding-bottom: 10px;"></div>
+                    <div><b>Account Name: </b></div>                  
+                    <div style="padding-bottom: 10px;"></div>
+                    <div><b>Platform: </b></div>
+                    <div style="padding-bottom: 10px;"></div>
+                      <button type="button" class="btn btn-dark btn-rounded btn-sm col-2" style="border-radius:25px">Low Risk</button>
+                      <div style="padding-bottom: 20px;"></div>
+                      <button type="submit" href="#" class="btn btn-outline-primary btn-md col-3" style="border-radius: 25px;">Add Account</button>
+                      <div style="padding-bottom: 10px;"></div>
+           
+                </div>
+
+</div>
+                </div>
+            
+            </div>
+           </div>
+{% endblock%}
+
+
+
+<!----
+        <div class="form-group">
+                      <label for="exampleInputUsername1">Account Name</label>
+                      <input type="text" class="form-control" name="accountname" placeholder="Account Name">
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleInputUsername2">Choose Platform</label>
+                <select class="form-select" aria-label="Default select example">
+                  <option value="1">MT4</option>
+                  <option value="2">MT5</option>
+                </select>
+                      </div>
+                    <div class="form-group">
+                      <label for="exampleInputnumber">Account Number</label>
+                      <input type="text" class="form-control" name="accountnumber" placeholder="Account Number">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Account Password</label>
+                      <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+              <div class="form-group">
+                      <label for="exampleInputServer Name">Account Server Name</label>
+                      <input type="text" class="form-control" name="servername" placeholder="Account Server Name">
+                    </div>
+
+                  <button type="button" href="#" class="btn btn-outline-primary btn-fw" style="border-radius: 25px;">
+
+                    --->>

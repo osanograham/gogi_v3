@@ -1,0 +1,34 @@
+{% extends 'main_template.html'%}
+
+{%block content%}
+
+<div class="card">
+    <div class="card-body">
+    {% for x in account %}
+    <div class="row">
+        <div class="col" style="padding-top:0px">
+            <div class="card" style="background-color:grey; padding: 25px;">
+             <h4><i class="mdi mdi-account-box" style="size: 45px"></i> <span> {{x.account_name}} </span></h4>
+            <p>Bots </p>
+            <p>Risk Management </p>
+            </div>
+        </div>
+        <div class="col-lg-8" style="background-color:grey; border-radius: 25px;padding: 25px; height: auto%;">
+            <h4>Broker Name: {{x.broker_name}} </h4>
+            <p>Server Name: {{x.account_server_name}} </p>
+            <p>Platform: {{x.choose_platform}} </p>
+            <p>Leverage:  </p>
+        </div>
+    </div>
+ 
+      
+        {% endfor%}
+        </div>  
+    </div>
+{% endblock%}
+
+<!--
+    {%for bot in indices_bots_list %}
+ {{bot.name}}
+ <br>
+{% endfor%}-->
